@@ -15,8 +15,8 @@ from sklearn import linear_model
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
 
-start = datetime(2010, 4, 4)
-end = datetime(2018, 4, 4)
+start = dt(2010, 4, 4)
+end = dt(2018, 4, 4)
 aapl = web.DataReader('AAPL', 'yahoo', start, end)
 aapl.index = pd.to_datetime(aapl.index)
 aapl['Days'] = (aapl.index - aapl.index.min())/np.timedelta64(1,'D')
@@ -74,7 +74,7 @@ temp = mean_squared_error(y_test, pred)
 print("Mean square error for log returns model: ", temp)
 #print(np.shape(X_test))
 #print(X_test[-1])
-t = datetime.strptime('2018-04-05', '%Y-%m-%d')
+t = dt.strptime('2018-04-05', '%Y-%m-%d')
 d = np.array([1, (t - aapl.index.min())/np.timedelta64(1,'D'), logClose[-1], 
               logPrevClose[-1]]).reshape(4,1).T
 print("*********************************")
@@ -109,7 +109,7 @@ pred = reg.predict(X_test)
 temp = mean_squared_error(y_test, pred)
 print("Mean square error for log returns model: ", temp)
 
-t = datetime.strptime('2018-04-05', '%Y-%m-%d')
+t = dt.strptime('2018-04-05', '%Y-%m-%d')
 d = np.array([1, (t - aapl.index.min())/np.timedelta64(1,'D'), logVolume[-1], 
               logPrevVolume[-1]]).reshape(4,1).T
 print("*********************************")
