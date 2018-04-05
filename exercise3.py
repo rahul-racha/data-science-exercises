@@ -41,6 +41,7 @@ logVolume = np.array(aapl['Log_Volume'].tolist())[3:-2]
 logPrevVolume = np.array(aapl['Log_Volume_Prev'].tolist())[3:-2]
 logPredVolume = np.array(aapl['Log_Volume_Pred'].tolist())[3:-2]
 
+reg = linear_model.LinearRegression()
 #log Close returns
 print("LOG PRICE RETURNS")
 #print(np.shape(logClose))
